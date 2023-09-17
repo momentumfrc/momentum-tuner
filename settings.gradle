@@ -1,3 +1,4 @@
 rootProject.name = 'momentum-tuner'
 include('motune-core')
 include('motune-revlib')
+include('motune-phoenix')
