@@ -17,7 +17,7 @@ class PIDTuner(
         private const val TUNER_TABLE = "momentum-tuners"
         private const val DEFAULT_VALUE: Double = 0.0
 
-        @JvmStatic fun build(controllerName: String) = PIDTunerBuilder(controllerName)
+        @JvmStatic fun builder(controllerName: String) = PIDTunerBuilder(controllerName)
     }
 
     private val store = DataStore.getInstance(dataStoreFile)
