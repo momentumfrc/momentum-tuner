@@ -1,2 +1,2 @@
 rootProject.name = 'momentum-tuner'
-include('lib')
+include('motune-core')
