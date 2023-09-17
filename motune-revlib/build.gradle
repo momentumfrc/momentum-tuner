@@ -4,7 +4,13 @@ plugins {
 
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
+
+    id 'maven-publish'
 }
+
+group = 'com.momentum4999.motune'
+version = '0.0.1'
+description = 'motune-revlib'
 
 dependencies {
     api project(':motune-core')
@@ -33,6 +39,7 @@ tasks.register('fatJar', Jar) {
 
     archiveAppendix = 'fatJar'
 
+    println("Compiling fatJar for " + project.description)
     def dependencies = configurations.compileClasspath.filter{
         def name = it.name
         it.exists() && !it.isDirectory() && excludeFromFatJar.every {!name.startsWith(it) }
