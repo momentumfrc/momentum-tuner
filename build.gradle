@@ -1,0 +1,19 @@
+ext {
+    wpilibversion = '2023.3.2'
+    excludeFromFatJar = ["motune", "wpilibj", "ntcore", "REVLib"]
+}
+
+allprojects {
+    repositories {
+        // Use Maven Central for resolving dependencies.
+        mavenCentral()
+
+        maven {
+            url = uri('https://frcmaven.wpi.edu/artifactory/release/')
+        }
+
+        maven {
+            url = 'https://maven.revrobotics.com/'
+        }
+    }
+}
