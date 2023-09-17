@@ -1,5 +1,6 @@
 package com.momentum4999.motune
 
+import edu.wpi.first.wpilibj.DriverStation
 import java.io.File
 import java.util.function.Consumer
 import java.util.function.Supplier
@@ -37,7 +38,8 @@ class PIDTunerBuilder(
     fun safeBuild(): PIDTuner?
         = try {
             build()
-        } catch(_: Exception) {
+        } catch(e: Exception) {
+            DriverStation.reportError("Failed to build PIDTuner", e.stackTrace)
             null
         }
 }

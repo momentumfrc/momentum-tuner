@@ -20,7 +20,8 @@ dependencies {
     
     implementation 'org.ini4j:ini4j:0.5.4'
 
-    implementation "edu.wpi.first.ntcore:ntcore-java:$wpilibversion"
+    implementation "edu.wpi.first.wpilibj:wpilibj-java:${wpilibversion}"
+    implementation "edu.wpi.first.ntcore:ntcore-java:${wpilibversion}"
 
     // Align versions of all Kotlin components
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
