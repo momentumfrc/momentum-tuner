@@ -1,4 +1,4 @@
-package com.momentum4999.tuner
+package com.momentum4999.motune
 
 import java.io.File
 import java.util.function.Consumer

@@ -1,4 +1,4 @@
-package com.momentum4999.tuner
+package com.momentum4999.motune
 
 import org.ini4j.Ini
 import java.io.File

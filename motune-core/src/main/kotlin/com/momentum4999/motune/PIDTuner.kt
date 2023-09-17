@@ -1,4 +1,4 @@
-package com.momentum4999.tuner
+package com.momentum4999.motune
 
 
 import edu.wpi.first.networktables.NetworkTable
