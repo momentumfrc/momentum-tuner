@@ -1,6 +1,5 @@
 plugins {
-    id 'java-library'
-    id 'maven-publish'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.21' apply false
 }
 
 ext {
@@ -9,8 +8,18 @@ ext {
 }
 
 subprojects {
+    apply plugin: 'org.jetbrains.kotlin.jvm'
     apply plugin: 'java-library'
     apply plugin: 'maven-publish'
+
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+
+    compileKotlin {
+        kotlinOptions {
+            jvmTarget = '11'
+        }
+    }
 
     java {
         withJavadocJar()
