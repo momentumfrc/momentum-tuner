@@ -17,7 +17,16 @@ class PIDTuner(
         private const val TUNER_TABLE = "momentum-tuners"
         private const val DEFAULT_VALUE: Double = 0.0
 
+        private val instances: MutableList<PIDTuner> = mutableListOf()
         @JvmStatic fun builder(controllerName: String) = PIDTunerBuilder(controllerName)
+
+        @JvmStatic fun pollAllStateValues() {
+            instances.forEach{ it.pollStateValues() }
+        }
+    }
+
+    init {
+        instances.add(this)
     }
 
     private val store = DataStore.getInstance(dataStoreFile)
@@ -52,11 +61,12 @@ class PIDTuner(
         store.save()
     }
 
-    fun updateStateValues() {
+    private fun pollStateValues() {
         stateValuePublishers.forEach { (sv, publisher) -> publisher.set(sv.supplier.get()) }
     }
 
     fun cleanup() {
         table.instance.removeListener(listenerHandle)
+        instances.removeIf{it == this}
     }
 }
