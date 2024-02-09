@@ -1,17 +1,18 @@
 package com.momentum4999.motune
 
 import edu.wpi.first.wpilibj.DriverStation
-import java.io.File
+import java.nio.file.Path
 import java.util.function.Consumer
 import java.util.function.Supplier
+import kotlin.io.path.Path
 
 class PIDTunerBuilder(
         val controllerName: String,
-        val dataStoreFile: File = File("/home/lvuser/pid_constants.ini"),
+        val dataStoreFile: Path = Path("/home/lvuser/pid_constants.ini"),
         val properties: List<PIDProperty> = listOf(),
         val stateValues: List<PIDStateValue> = listOf()
 ) {
-    fun withDataStoreFile(file: File)
+    fun withDataStoreFile(file: Path)
         = PIDTunerBuilder(controllerName, file, properties, stateValues)
 
     fun withProperty(prop: PIDProperty)

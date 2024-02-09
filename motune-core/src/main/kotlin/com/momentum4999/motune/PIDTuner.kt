@@ -4,12 +4,12 @@ package com.momentum4999.motune
 import edu.wpi.first.networktables.NetworkTable
 import edu.wpi.first.networktables.NetworkTableEvent
 import edu.wpi.first.networktables.NetworkTableInstance
-import java.io.File
+import java.nio.file.Path
 import java.util.*
 
 class PIDTuner(
         private val controllerName: String,
-        dataStoreFile: File,
+        dataStoreFile: Path,
         properties: List<PIDProperty>,
         stateValues: List<PIDStateValue>
 ) : NetworkTable.TableEventListener {
@@ -57,6 +57,11 @@ class PIDTuner(
         val prop = properties[key] ?: return
 
         prop.consumer.accept(value)
+
+        val oldValueOptional = store.getValue(controllerName, prop.propertyName)
+        if(oldValueOptional.isPresent && oldValueOptional.orElseThrow() == value) {
+            return
+        }
         store.putValue(controllerName, prop.propertyName, value)
         store.save()
     }
