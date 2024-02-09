@@ -3,7 +3,7 @@ plugins {
 }
 
 ext {
-    wpilibversion = '2023.3.2'
+    wpilibversion = '2024.2.1'
     excludeFromFatJar = ["motune", "wpilibj", "ntcore", "REVLib"]
 }
 
