@@ -52,6 +52,15 @@ class PIDTuner(
         }
     }
 
+    fun populatePIDValues() {
+        properties.forEach { (name, property) ->
+            val value = store.getValue(controllerName, name)
+            value.ifPresent { value ->
+                property.consumer.accept(value)
+            }
+        }
+    }
+
     override fun accept(table: NetworkTable, key: String, e: NetworkTableEvent) {
         val value = e.valueData.value.double
         val prop = properties[key] ?: return
