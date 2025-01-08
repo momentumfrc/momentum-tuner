@@ -1,9 +1,9 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.9.22' apply false
+    id 'org.jetbrains.kotlin.jvm' version '2.0.10' apply false
 }
 
 ext {
-    wpilibversion = '2024.2.1'
+    wpilibversion = '2025.1.1'
     excludeFromFatJar = ["motune", "wpilibj", "ntcore", "REVLib"]
 }
 
@@ -12,12 +12,14 @@ subprojects {
     apply plugin: 'java-library'
     apply plugin: 'maven-publish'
 
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 
     compileKotlin {
         kotlinOptions {
-            jvmTarget = '11'
+            jvmTarget = '17'
         }
     }
 
