@@ -1,5 +1,5 @@
 group = 'com.momentum4999.motune'
-version = '0.2.0'
+version = '0.2.1'
 description = 'motune-core'
 
 dependencies {

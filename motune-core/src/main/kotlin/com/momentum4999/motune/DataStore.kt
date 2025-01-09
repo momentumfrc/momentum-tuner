@@ -38,6 +38,10 @@ class DataStore(private val file: Path) {
         }
 
     private fun backup() {
+        if (!Files.isRegularFile(file)) {
+            return
+        }
+
         val name = file.fileName.toString()
         val toRemove = file.resolveSibling(name + MAX_NUM_BACKUP)
         Files.deleteIfExists(toRemove)
